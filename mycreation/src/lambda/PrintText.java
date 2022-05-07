@@ -5,7 +5,7 @@ public class PrintText {
 	
 	public static void main(String[] args) {		
 		
-		MyPrint myPrint1 = (text) -> {
+		PrintInterface myPrint1 = (text) -> {
 			System.out.println(welcome + " " + text);
 		};
 		

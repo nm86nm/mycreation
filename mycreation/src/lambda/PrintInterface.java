@@ -1,5 +1,5 @@
 package lambda;
 
-public interface MyPrint {
+public interface PrintInterface {
 	public void myPrint(String text);	
 }
