@@ -1,11 +1,17 @@
 package utility;
-public class Random {	
+
+public class Random {
+	
+	public int getRandomNumber(int min, int max) {
+		RoundDouble roundDouble = new RoundDouble();		
+		double randomNumberDouble = Math.random() * (max - min) + min;		
+		int randomNumberInt = (int) roundDouble.roundDouble(randomNumberDouble, 0);		
+
+		return randomNumberInt;
+	}
+
 	public static void main(String[] args) {
-		java.util.Random random = new java.util.Random(20);	
-		int number = random.nextInt(200);
-		System.out.println("random number is: " + number);
-		
-		int mathrandom = (int) (Math.random() * 100);
-		System.out.println("Math.random() = " + mathrandom);
+		Random random = new Random();
+		System.out.println(random.getRandomNumber(0, 10));
 	}
 }
