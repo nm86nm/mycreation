@@ -8,14 +8,13 @@ class InstantTask implements Runnable{
 
 	private CountDownLatch countDownLatch;	
 	
-	public InstantTask(CountDownLatch countDownLatch) {
-		super();
+	public InstantTask(CountDownLatch countDownLatch) {		
 		this.countDownLatch = countDownLatch;
 	}
 	
 	@Override
 	public void run() {		
-		System.out.println(Thread.currentThread());
+		System.out.println("InstantTask -> " + Thread.currentThread());
 		countDownLatch.countDown();
 	}	
 }
@@ -24,8 +23,7 @@ class WaitTask implements Runnable{
 
 	private CountDownLatch countDownLatch;	
 	
-	public WaitTask(CountDownLatch countDownLatch) {
-		super();
+	public WaitTask(CountDownLatch countDownLatch) {		
 		this.countDownLatch = countDownLatch;
 	}
 	
@@ -34,11 +32,10 @@ class WaitTask implements Runnable{
 		try {
 			countDownLatch.await();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		System.out.println(Thread.currentThread());
+		System.out.println("WaitTask -> " + Thread.currentThread());
 	}	
 }
 

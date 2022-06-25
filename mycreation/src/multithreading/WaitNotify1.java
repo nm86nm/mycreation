@@ -14,7 +14,7 @@ class Sum implements Runnable {
 	@Override
 	public void run() {
 		while (!Thread.interrupted()) {
-			try {
+			try {				
 				result.add();
 				TimeUnit.SECONDS.sleep(3);
 			} catch (InterruptedException e) {
@@ -34,9 +34,9 @@ class Difference implements Runnable {
 	@Override
 	public void run() {
 		while (!Thread.interrupted()) {
-			try {
+			try {				
 				result.subtract();
-				TimeUnit.SECONDS.sleep(3);
+				TimeUnit.SECONDS.sleep(3); 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -117,8 +117,7 @@ class Producer1ForPriorityBlockingQueue1 implements Runnable{
 class Consumer1ForPriorityBlockingQueue1 implements Runnable {	
 	PriorityBlockingQueue<Runnable> priorityBlockingQueue;
 
-	public Consumer1ForPriorityBlockingQueue1(PriorityBlockingQueue<Runnable> priorityBlockingQueue) {
-		super();
+	public Consumer1ForPriorityBlockingQueue1(PriorityBlockingQueue<Runnable> priorityBlockingQueue) {		
 		this.priorityBlockingQueue = priorityBlockingQueue;
 	}
 
@@ -134,10 +133,11 @@ class Consumer1ForPriorityBlockingQueue1 implements Runnable {
 }
 
 public class PriorityBlockingQueue1 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		PriorityBlockingQueue<Runnable> priorityBlockingQueue = new PriorityBlockingQueue<Runnable>();
 		executorService.execute(new Producer1ForPriorityBlockingQueue1(executorService, priorityBlockingQueue));
+		Thread.sleep(1000);
 		executorService.execute(new Consumer1ForPriorityBlockingQueue1(priorityBlockingQueue));		
 	}
 }
