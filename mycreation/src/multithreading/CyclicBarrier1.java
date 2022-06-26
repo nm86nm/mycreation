@@ -4,9 +4,11 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 class Task1ForCyclicBarrier1 implements Runnable {
-	private int counter = 0;	
+	private static int counter = 0;
+	private final int id = counter++;
 	private CyclicBarrier cyclicBarrier;
 
 	public Task1ForCyclicBarrier1(CyclicBarrier cyclicBarrier) {
@@ -15,19 +17,18 @@ class Task1ForCyclicBarrier1 implements Runnable {
 
 	@Override
 	public void run() {
-		while (counter < 10) {
-			System.out.println(Thread.currentThread() + ", counter =  " + counter);			
-			counter++;		
-			
+		for (int i = 0; i < 10; i++) {
+			System.out.println(Thread.currentThread() + ", id =  " + id);
+
 			try {
-				Thread.sleep(1000);
+				TimeUnit.SECONDS.sleep(id);
 				cyclicBarrier.await();
 			} catch (InterruptedException | BrokenBarrierException e) {
 				e.printStackTrace();
-			}
-		}		
+			}			
+		}
 	}
-} 
+}
 
 public class CyclicBarrier1 {
 	public static void main(String[] args) {
@@ -35,7 +36,8 @@ public class CyclicBarrier1 {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 
 		for (int i = 0; i < 10; i++)
-			executorService.execute(new Task1ForCyclicBarrier1(cyclicBarrier));		
-	    executorService.shutdown();
+			executorService.execute(new Task1ForCyclicBarrier1(cyclicBarrier));
+
+		executorService.shutdown();
 	}
 }

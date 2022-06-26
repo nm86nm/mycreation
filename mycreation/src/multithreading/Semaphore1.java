@@ -17,12 +17,12 @@ class Task1ForSemaphore1 implements Runnable{
 	@Override
 	public void run() {
 		try {			
-			TimeUnit.MILLISECONDS.sleep(100*id);
+			TimeUnit.MILLISECONDS.sleep(100*id);			
 			semaphore.acquire();
 			System.out.println("semaphore.acruire(), id = " + id + ", semaphore.availablePermits() = " + semaphore.availablePermits());
-			TimeUnit.SECONDS.sleep(5);						
-			semaphore.release();			
-			System.out.println("semaphore.release(), id = " + id + ", semaphore.availablePermits() = " + semaphore.availablePermits());			
+			TimeUnit.SECONDS.sleep(5);			
+			semaphore.release();				
+			System.out.println("semaphore.release(), id = " + id + ", semaphore.availablePermits() = " + semaphore.availablePermits());
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,5 +38,7 @@ public class Semaphore1 {
 		
 		for(int i=0; i<20; i++) 			
 			executorService.execute(new Task1ForSemaphore1(semaphoreSize));
+		
+		executorService.shutdown();
 	}
 }

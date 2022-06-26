@@ -69,6 +69,6 @@ public class WaitNotify1 {
 		executorService.execute(new Sum(result));
 		executorService.execute(new Difference(result));
 		TimeUnit.SECONDS.sleep(10);
-		executorService.isShutdown();
+		executorService.shutdown();
 	}
 }
