@@ -47,7 +47,7 @@ class Task2ForExchanger1 implements Runnable{
 public class Exchanger1 {
 	public static void main(String[] args) {
 		Exchanger<String> exchanger = new Exchanger<String>();
-		Task1ForExchanger1 task1ForExchanger1 = new Task1ForExchanger1(exchanger);
-		Task2ForExchanger1 task2ForExchanger1 = new Task2ForExchanger1(exchanger);				
+		new Task1ForExchanger1(exchanger);
+		new Task2ForExchanger1(exchanger);				
 	}	
 }

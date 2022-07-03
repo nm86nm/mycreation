@@ -84,11 +84,11 @@ class Task3ForPriorityBlockingQueue1 implements TaskForPriorityBlockingQueue1, C
 }
 
 class Producer1ForPriorityBlockingQueue1 implements Runnable{	
-	private ExecutorService executorService;	
+	//private ExecutorService executorService;	
 	private Queue<Runnable> queue;	
 
-	public Producer1ForPriorityBlockingQueue1(ExecutorService executorService, Queue<Runnable> queue) {		
-		this.executorService = executorService;
+	public Producer1ForPriorityBlockingQueue1(Queue<Runnable> queue) {		
+		//this.executorService = executorService;
 		this.queue = queue;
 	}
 	
@@ -136,7 +136,7 @@ public class PriorityBlockingQueue1 {
 	public static void main(String[] args) throws InterruptedException {
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		PriorityBlockingQueue<Runnable> priorityBlockingQueue = new PriorityBlockingQueue<Runnable>();
-		executorService.execute(new Producer1ForPriorityBlockingQueue1(executorService, priorityBlockingQueue));
+		executorService.execute(new Producer1ForPriorityBlockingQueue1(priorityBlockingQueue));
 		Thread.sleep(1000);
 		executorService.execute(new Consumer1ForPriorityBlockingQueue1(priorityBlockingQueue));		
 	}
