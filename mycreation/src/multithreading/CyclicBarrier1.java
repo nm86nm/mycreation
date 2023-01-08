@@ -8,15 +8,16 @@ import java.util.concurrent.TimeUnit;
 
 class Task1ForCyclicBarrier1 implements Runnable {
 	private static int counter = 0;
-	private final int id = counter++;
-	private CyclicBarrier cyclicBarrier;
+	private final int id = counter++;	
+	
+	private CyclicBarrier cyclicBarrier;	
 
 	public Task1ForCyclicBarrier1(CyclicBarrier cyclicBarrier) {
-		this.cyclicBarrier = cyclicBarrier;
+		this.cyclicBarrier = cyclicBarrier;		
 	}
 
 	@Override
-	public void run() {
+	public void run() {		
 		for (int i = 0; i < 10; i++) {
 			System.out.println(Thread.currentThread() + ", id =  " + id);
 

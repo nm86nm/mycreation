@@ -37,8 +37,8 @@ class Consumer1ForDelayQueue1 implements Runnable {
 			try {
 				delayQueue.take().run();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+				e.printStackTrace();				
+			}		
 	}
 }
 
